@@ -23,7 +23,7 @@
     "build:clean": "yarn clean && yarn build",
     "clean": "rimraf 'dist/*'",
     "start": "mm-snap watch",
-    "test": "jest --passWithNoTests",
+    "test": "jest --silent --runInBand",
     "test:watch": "jest --watch",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' '**/*.yml' --single-quote --ignore-path ../../.prettierignore --no-error-on-unmatched-pattern",
@@ -36,6 +36,7 @@
     "@metamask/snap-types": "^0.23.0"
   },
   "devDependencies": {
+    "@chainsafe/dappeteer": "^4.0.0-rc.0",
     "@metamask/auto-changelog": "^2.5.0",
     "@metamask/eslint-config": "^6.0.0",
     "@metamask/eslint-config-jest": "^6.0.0",
@@ -52,6 +53,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.4.2",
+    "playwright": "^1.27.1",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.3.0",
