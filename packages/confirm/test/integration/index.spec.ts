@@ -29,7 +29,7 @@ describe('confirm snap', function () {
     browser.close();
   });
 
-  test('snap invoke confirm successful', async function () {
+  test('snap invoke confirm accept', async function () {
     const resultPromise = dappeteer.snaps.invokeSnap(
       connectedPage,
       snapId,
@@ -41,6 +41,38 @@ describe('confirm snap', function () {
     const result = await resultPromise;
 
     expect(result).toBe(true);
+  });
+
+  test('snap invoke confirm reject', async function () {
+    const resultPromise = dappeteer.snaps.invokeSnap(
+      connectedPage,
+      snapId,
+      'confirm',
+      ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
+    );
+
+    await dappeteer.snaps.rejectDialog();
+    const result = await resultPromise;
+
+    expect(result).toBe(false);
+  });
+
+  test('snap invoke wrong method', async function () {
+    interface resultType {
+      code: number;
+      data: { originalError: unknown };
+      message: string;
+    }
+    const resultPromise = dappeteer.snaps.invokeSnap<resultType>(
+      connectedPage,
+      snapId,
+      'test-faliure',
+    );
+
+    // await dappeteer.snaps.acceptDialog();
+    const result = await resultPromise;
+
+    expect(result.message).toBe('Method not found.');
   });
 
   test('snap invoke rpc.discover', async function () {
