@@ -1,6 +1,3 @@
-module.exports = {
-  preset: 'ts-jest',
-  resetMocks: true,
-  restoreMocks: true,
-  testTimeout: 50000,
-};
+const sharedConfig = require("../../jest.config")
+
+module.exports = {...sharedConfig};
