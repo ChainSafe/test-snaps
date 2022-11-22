@@ -21,7 +21,7 @@
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:changelogs": "yarn workspaces foreach --parallel --verbose run lint:changelog",
-    "test": "yarn workspaces foreach run test"
+    "test": "yarn workspaces foreach --verbose run test"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.1.0",
@@ -54,6 +54,7 @@
   },
   "lavamoat": {
     "allowScripts": {
+      "playwright": true,
       "@lavamoat/preinstall-always-fail": false,
       "gatsby-plugin-manifest>gatsby": false,
       "gatsby-plugin-manifest>gatsby>@parcel/cache>lmdb": false,
