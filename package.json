@@ -54,6 +54,7 @@
   },
   "lavamoat": {
     "allowScripts": {
+      "playwright": true,
       "@lavamoat/preinstall-always-fail": false,
       "gatsby-plugin-manifest>gatsby": false,
       "gatsby-plugin-manifest>gatsby>@parcel/cache>lmdb": false,

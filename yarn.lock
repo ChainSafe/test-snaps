@@ -15920,6 +15920,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root@workspace:."
   dependencies:
+    "@chainsafe/dappeteer": ^4.0.0-rc.0
     "@lavamoat/allow-scripts": ^2.1.0
     "@metamask/auto-changelog": ^2.3.0
     "@metamask/eslint-config": ^9.0.0
@@ -15939,6 +15940,7 @@ __metadata:
     gatsby-plugin-manifest: ^4.24.0
     jest: ^26.4.2
     node-static: ^0.7.11
+    playwright: ^1.27.1
     prettier: ^2.2.1
     ts-jest: ^26.3.0
     ts-node: ^9.0.0

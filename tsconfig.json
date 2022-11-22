@@ -3,7 +3,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "inlineSources": false,
-    "module": "CommonJS",
+    "module": "ES6",
     "moduleResolution": "Node",
     "sourceMap": true,
     "strict": true,
