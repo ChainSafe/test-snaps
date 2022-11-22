@@ -69,7 +69,6 @@ describe('confirm snap', function () {
       'test-faliure',
     );
 
-    // await dappeteer.snaps.acceptDialog();
     const result = await resultPromise;
 
     expect(result.message).toBe('Method not found.');
