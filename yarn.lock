@@ -2780,6 +2780,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-notification@workspace:packages/notification"
   dependencies:
+    "@chainsafe/dappeteer": ^4.0.0-rc.0
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2797,6 +2798,7 @@ __metadata:
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^3.4.0
     jest: ^26.4.2
+    playwright: ^1.27.1
     prettier: ^2.2.1
     rimraf: ^3.0.2
     ts-jest: ^26.3.0
