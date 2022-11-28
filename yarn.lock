@@ -14580,6 +14580,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.28.1":
+  version: 1.28.1
+  resolution: "playwright-core@npm:1.28.1"
+  bin:
+    playwright: cli.js
+  checksum: 8899e0d65de43ee10fadc171e0d48cd514bb574f3505478700094afa8a6e0dcd888a5c87af22acf31ebad455ada1327028909c42e20b8e25908b6255dc143bf0
+  languageName: node
+  linkType: hard
+
 "playwright@npm:^1.27.1":
   version: 1.28.0
   resolution: "playwright@npm:1.28.0"
@@ -14588,6 +14597,17 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: c6a50efe0ed3ea92a2b6fe579ef8dcf0ad3dec753e7dbc0dc3c6b3bf4638e7aebb98c3c6046ac97ee851e23d411a15915354528ef90a586296a2f0ad6ad7f780
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.28.1":
+  version: 1.28.1
+  resolution: "playwright@npm:1.28.1"
+  dependencies:
+    playwright-core: 1.28.1
+  bin:
+    playwright: cli.js
+  checksum: 97c6fff2835878da856bf1f587ec4cdcbcc9aa61c0efcf592633f6df37eabbb9e59d7a2ef994ec9283338e43ef80e278d6d52fed5f7c29abd0408fac0f69b3ca
   languageName: node
   linkType: hard
 
@@ -16205,6 +16225,7 @@ __metadata:
     gatsby-plugin-manifest: ^4.24.0
     jest: ^26.4.2
     node-static: ^0.7.11
+    playwright: ^1.28.1
     prettier: ^2.2.1
     ts-jest: ^26.3.0
     ts-node: ^9.0.0

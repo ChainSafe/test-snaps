@@ -21,7 +21,7 @@
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:changelogs": "yarn workspaces foreach --parallel --verbose run lint:changelog",
-    "test": "yarn workspaces foreach --verbose run test"
+    "test": "yarn add playwright && yarn workspaces foreach --verbose run test"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.1.0",
@@ -66,7 +66,11 @@
       "gatsby-plugin-manifest>gatsby>lmdb": false,
       "gatsby-plugin-manifest>gatsby>lmdb>msgpackr>msgpackr-extract": false,
       "gatsby-plugin-manifest>gatsby>memoizee>es5-ext": false,
-      "gatsby-plugin-manifest>sharp": true
+      "gatsby-plugin-manifest>sharp": true,
+      "playwright": true
     }
+  },
+  "dependencies": {
+    "playwright": "^1.28.1"
   }
 }
