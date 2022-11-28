@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.1.0",
+    "@lavamoat/preinstall-always-fail": "^1.0.0",
     "@metamask/auto-changelog": "^2.3.0",
     "@metamask/eslint-config": "^9.0.0",
     "@metamask/eslint-config-jest": "^9.0.0",
@@ -54,7 +55,6 @@
   },
   "lavamoat": {
     "allowScripts": {
-      "playwright": true,
       "@lavamoat/preinstall-always-fail": false,
       "gatsby-plugin-manifest>gatsby": false,
       "gatsby-plugin-manifest>gatsby>@parcel/cache>lmdb": false,
