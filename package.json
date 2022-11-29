@@ -21,10 +21,11 @@
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:changelogs": "yarn workspaces foreach --parallel --verbose run lint:changelog",
-    "test": "jest --passWithNoTests"
+    "test": "yarn workspaces foreach --verbose run test"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.1.0",
+    "@lavamoat/preinstall-always-fail": "^1.0.0",
     "@metamask/auto-changelog": "^2.3.0",
     "@metamask/eslint-config": "^9.0.0",
     "@metamask/eslint-config-jest": "^9.0.0",
@@ -43,6 +44,7 @@
     "gatsby-plugin-manifest": "^4.24.0",
     "jest": "^26.4.2",
     "node-static": "^0.7.11",
+    "playwright": "^1.27.1",
     "prettier": "^2.2.1",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
@@ -65,7 +67,8 @@
       "gatsby-plugin-manifest>gatsby>lmdb": false,
       "gatsby-plugin-manifest>gatsby>lmdb>msgpackr>msgpackr-extract": false,
       "gatsby-plugin-manifest>gatsby>memoizee>es5-ext": false,
-      "gatsby-plugin-manifest>sharp": true
+      "gatsby-plugin-manifest>sharp": true,
+      "playwright": true
     }
   }
 }
