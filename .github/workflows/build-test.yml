@@ -32,7 +32,6 @@ jobs:
       - run: yarn --immutable
       - run: yarn build
       - run: yarn lint
-      - run: yarn add playwright -D
       - run: xvfb-run --auto-servernum  yarn test
       - name: Validate RC changelog
         if: ${{ startsWith(github.head_ref, 'release/') }}
