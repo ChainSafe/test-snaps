@@ -25,7 +25,7 @@ describe('manage state snap', function () {
   });
 
   afterAll(async function () {
-    browser.close();
+    await browser.close();
   });
 
   test('retrieve test data if it was not updated before', async function () {

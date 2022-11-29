@@ -25,7 +25,7 @@ describe('error snap', function () {
   });
 
   afterAll(async function () {
-    browser.close();
+    await browser.close();
   });
 
   test('snap error on invoke snap', async function () {

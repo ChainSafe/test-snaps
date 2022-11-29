@@ -25,7 +25,7 @@ describe('notification snap', function () {
   });
 
   afterAll(async function () {
-    browser.close();
+    await browser.close();
   });
 
   test('inApp notification', async function () {
