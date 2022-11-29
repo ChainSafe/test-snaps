@@ -2533,7 +2533,6 @@ __metadata:
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^3.4.0
     jest: ^26.4.2
-    playwright: ^1.27.1
     prettier: ^2.2.1
     rimraf: ^3.0.2
     ts-jest: ^26.3.0

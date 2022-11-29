@@ -26,7 +26,7 @@ describe('confirm snap', function () {
   });
 
   afterAll(async function () {
-    browser.close();
+    await browser.close();
   });
 
   test('snap invoke confirm accept', async function () {
