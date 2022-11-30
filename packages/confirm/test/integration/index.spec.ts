@@ -63,15 +63,15 @@ describe('confirm snap', function () {
       data: { originalError: unknown };
       message: string;
     }
-    const resultPromise = dappeteer.snaps.invokeSnap<resultType>(
-      connectedPage,
-      snapId,
-      'test-faliure',
-    );
-
-    const result = await resultPromise;
-
-    expect(result.message).toBe('Method not found.');
+    try {
+      dappeteer.snaps.invokeSnap<resultType>(
+        connectedPage,
+        snapId,
+        'test-faliure',
+      );
+    } catch (e) {
+      expect(e).toBe('Method not found.');
+    }
   });
 
   test('snap invoke rpc.discover', async function () {

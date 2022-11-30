@@ -95,12 +95,15 @@ describe('manage state snap', function () {
       data: { originalError: unknown };
       message: string;
     }
-    const result = await dappeteer.snaps.invokeSnap<resultType>(
-      connectedPage,
-      snapId,
-      'giveMeData',
-      ['get'],
-    );
-    expect(result.message).toBe('Method not found.');
+    try {
+      await dappeteer.snaps.invokeSnap<resultType>(
+        connectedPage,
+        snapId,
+        'giveMeData',
+        ['get'],
+      );
+    } catch (e) {
+      expect((e as resultType).message).toBe('Method not found.');
+    }
   });
 });
