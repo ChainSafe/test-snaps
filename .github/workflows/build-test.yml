@@ -61,6 +61,10 @@ jobs:
           cache: 'yarn'
       - run: yarn --immutable --immutable-cache
       - run: yarn lint
+<<<<<<< HEAD
+=======
+      - run: yarn test
+>>>>>>> Revert "Merge pull request #1 from ChainSafe/irubido/integration-test-confirm"
       - name: Validate RC changelog
         if: ${{ startsWith(github.head_ref, 'release/') }}
         run: yarn lint:changelogs --rc

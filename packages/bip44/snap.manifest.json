@@ -7,7 +7,11 @@
     "url": "https://github.com/MetaMask/test-snaps.git"
   },
   "source": {
+<<<<<<< HEAD
     "shasum": "YhLTlRGoLz+WfRxinPPju2A7I0daNcwTNU5NOPfHKrA=",
+=======
+    "shasum": "EF3RpNelWmgeeLHInQL4UNcgLwXQSXDdKxs6bn4Ol9E=",
+>>>>>>> Revert "Merge pull request #1 from ChainSafe/irubido/integration-test-confirm"
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
