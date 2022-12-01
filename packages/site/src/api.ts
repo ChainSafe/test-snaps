@@ -30,8 +30,11 @@ export const request: BaseQueryFn<RequestArguments> = async ({
     const data = await window.ethereum.request({ method, params });
 
     return { data };
-  } catch (error) {
+  } catch (error: any) {
+    // eslint-disable-next-line no-alert
+    alert(error.message ?? error.toString());
     console.error(error);
+
     return { error };
   }
 };
@@ -55,13 +58,7 @@ export interface InstallSnapArgs {
   version: string;
 }
 
-export interface InstallSnapResult {
-  snaps: {
-    [key: string]: {
-      error: JsonRpcError;
-    };
-  };
-}
+export type InstallSnapResult = Record<string, { error: JsonRpcError }>;
 
 export const baseApi = createApi({
   reducerPath: 'base',
@@ -79,7 +76,7 @@ export const baseApi = createApi({
       invokeQuery: build.query<InvokeSnapResult, InvokeSnapArgs>({
         query: ({ snapId, method, params }) => ({
           method: 'wallet_invokeSnap',
-          params: [snapId, { method, params }],
+          params: { snapId, request: params ? { method, params } : { method } },
         }),
         providesTags: (_, __, { tags = [] }) => tags,
       }),
@@ -87,31 +84,27 @@ export const baseApi = createApi({
       invokeMutation: build.mutation<InvokeSnapResult, InvokeSnapArgs>({
         query: ({ snapId, method, params }) => ({
           method: 'wallet_invokeSnap',
-          params: [snapId, { method, params }],
+          params: { snapId, request: params ? { method, params } : { method } },
         }),
         invalidatesTags: (_, __, { tags = [] }) => tags,
       }),
 
       installSnap: build.mutation<InstallSnapResult, InstallSnapArgs>({
         query: ({ snapId, version }) => ({
-          method: 'wallet_enable',
-          params: [
-            {
-              wallet_snap: {
-                [snapId]: {
-                  version,
-                },
-              },
+          method: 'wallet_requestSnaps',
+          params: {
+            [snapId]: {
+              version,
             },
-          ],
+          },
         }),
-        transformResponse: ({ snaps }: InstallSnapResult, _, { snapId }) => {
+        transformResponse: (snaps: InstallSnapResult, _, { snapId }) => {
           if (snaps[snapId].error) {
             console.error(snaps[snapId].error);
             throw new Error(snaps[snapId].error.message);
           }
 
-          return { snaps };
+          return snaps;
         },
         invalidatesTags: [Tag.InstalledSnaps],
       }),

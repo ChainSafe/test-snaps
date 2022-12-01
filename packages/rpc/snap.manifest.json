@@ -1,28 +1,25 @@
 {
   "version": "4.2.0",
-  "description": "An example Snap that signs messages using BLS.",
-  "proposedName": "@metamask/test-snap-bip44",
+  "description": "An example snap to test JSON-RPC permissions.",
+  "proposedName": "@metamask/test-snap-rpc",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/test-snaps.git"
   },
   "source": {
-    "shasum": "zoDrTclXMHPhTqR3m+nKFGq6FpCRRfY8zBmFG2Jx8mM=",
+    "shasum": "g7T1uCi+lZNdSo85d4ixmkC9DsoBDe99Lv1wLRu/Iz8=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "packageName": "@metamask/test-snap-bip44",
+        "packageName": "@metamask/test-snap-rpc",
         "registry": "https://registry.npmjs.org"
       }
     }
   },
   "initialPermissions": {
-    "snap_confirm": {},
-    "snap_getBip44Entropy": [
-      {
-        "coinType": 1
-      }
-    ]
+    "endowment:rpc": {
+      "dapps": true
+    }
   },
   "manifestVersion": "0.1"
 }

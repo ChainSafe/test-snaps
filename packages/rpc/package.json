@@ -1,7 +1,7 @@
 {
-  "name": "@metamask/test-snap-notification",
+  "name": "@metamask/test-snap-rpc",
   "version": "4.2.0",
-  "description": "MetaMask notification Test Snap",
+  "description": "MetaMask JSON-RPC Permissions Test Snap",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -12,15 +12,16 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "license": "ISC",
   "files": [
     "dist/",
-    "snap.manifest.json",
-    "images/icon.svg"
+    "images/icon.svg",
+    "snap.manifest.json"
   ],
   "scripts": {
     "build": "mm-snap build --eval false",
-    "build:dev": "yarn build",
     "build:clean": "yarn clean && yarn build",
+    "build:dev": "yarn build",
     "clean": "rimraf 'dist/*'",
     "start": "mm-snap watch",
     "test": "jest --passWithNoTests",
@@ -35,7 +36,6 @@
     "@metamask/snaps-types": "^0.24.1"
   },
   "devDependencies": {
-    "@chainsafe/dappeteer": "^4.0.0-rc.1",
     "@metamask/auto-changelog": "^2.5.0",
     "@metamask/eslint-config": "^6.0.0",
     "@metamask/eslint-config-jest": "^6.0.0",
