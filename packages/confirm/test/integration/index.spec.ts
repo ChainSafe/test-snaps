@@ -36,7 +36,7 @@ describe('confirm snap', function () {
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
-
+    await dappeteer.page.waitForTimeout(1000);
     await dappeteer.snaps.acceptDialog();
     const result = await resultPromise;
 
@@ -50,7 +50,7 @@ describe('confirm snap', function () {
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
-
+    await dappeteer.page.waitForTimeout(1000);
     await dappeteer.snaps.rejectDialog();
     const result = await resultPromise;
 
