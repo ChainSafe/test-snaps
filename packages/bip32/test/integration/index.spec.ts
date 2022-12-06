@@ -58,6 +58,7 @@ describe('bip32 snap', function () {
         message: 'Sign message test secp256k1',
       },
     );
+    await dappeteer.page.waitForTimeout(1000);
     await dappeteer.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBe(
@@ -77,6 +78,7 @@ describe('bip32 snap', function () {
         message: 'Sign message test ed25519',
       },
     );
+    await dappeteer.page.waitForTimeout(1000);
     await dappeteer.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBe(
@@ -92,6 +94,7 @@ describe('bip32 snap', function () {
         compressed: false,
         message: 'Message that test will not accept',
       });
+      await dappeteer.page.waitForTimeout(1000);
       await dappeteer.snaps.rejectDialog();
     } catch (e) {
       const error = ethErrors.provider.userRejectedRequest();
