@@ -70,5 +70,8 @@
       "gatsby-plugin-manifest>sharp": true,
       "playwright": true
     }
+  },
+  "jest": {
+    "testTimeout": 50000
   }
 }
