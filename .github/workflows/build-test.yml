@@ -9,7 +9,7 @@ jobs:
   prepare:
     name: Prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -23,7 +23,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     needs:
       - prepare
     strategy:
@@ -49,7 +49,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     needs:
       - prepare
     strategy:
@@ -81,7 +81,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     needs:
       - prepare
     strategy:
@@ -107,7 +107,7 @@ jobs:
   check-workflows:
     name: Check workflows
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3
       - name: Download actionlint
@@ -121,7 +121,7 @@ jobs:
   all-jobs-pass:
     name: All jobs pass
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     needs:
       - build
       - lint
@@ -138,7 +138,7 @@ jobs:
     outputs:
       IS_RELEASE: ${{ steps.is-release.outputs.IS_RELEASE }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     steps:
       - uses: MetaMask/action-is-release@v1
         id: is-release
