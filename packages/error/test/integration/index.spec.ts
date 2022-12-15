@@ -1,26 +1,25 @@
 import path from 'path';
 import {
   Dappeteer,
-  initSnapEnv,
-  DappeteerPage,
   DappeteerBrowser,
+  DappeteerPage,
+  initSnapEnv,
 } from '@chainsafe/dappeteer';
 
 describe('error snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: false,
+      installationSnapUrl: 'https://google.com',
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
+    connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
 
@@ -29,7 +28,7 @@ describe('error snap', function () {
   });
 
   test('snap error on invoke snap', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'rpc',
