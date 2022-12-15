@@ -14,17 +14,12 @@ describe('confirm snap', function () {
   let snapId: string;
 
   beforeAll(async function () {
-    const dappeteer = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
       installationSnapUrl: 'https://google.com',
-    });
-    metaMask = dappeteer.metaMask;
-    browser = dappeteer.browser;
-    snapId = dappeteer.snapId;
-
-    await metaMask.page.waitForTimeout(3000);
+    }));
     connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
@@ -40,6 +35,8 @@ describe('confirm snap', function () {
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
+
+    await metaMask.page.waitForTimeout(1000);
     await metaMask.snaps.acceptDialog();
 
     expect(await resultPromise).toBe(true);
@@ -52,6 +49,7 @@ describe('confirm snap', function () {
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
+    await metaMask.page.waitForTimeout(1000);
     await metaMask.snaps.rejectDialog();
     const result = await resultPromise;
 
