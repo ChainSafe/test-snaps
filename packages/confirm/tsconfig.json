@@ -4,12 +4,6 @@
     "outDir": "build",
     "rootDir": "src"
   },
-  "exclude": [
-    "./src/**/*.test.ts",
-    "./build"
-  ],
-  "include": [
-    "./src/**/*.ts",
-    "../../node_modules/@metamask/snap-types/global.d.ts"
-  ]
+  "exclude": ["./src/**/*.test.ts", "./build"],
+  "include": ["./src/**/*.ts"]
 }
