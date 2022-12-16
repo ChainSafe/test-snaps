@@ -95,7 +95,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn --immutable --immutable-cache
-      - run: yarn build
+      - run: yarn build:snap
       - run: xvfb-run --auto-servernum --server-args="-screen 0, 1920x1080x24" yarn test
       - name: Require clean working directory
         shell: bash
