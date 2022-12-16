@@ -1503,9 +1503,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainsafe/dappeteer@npm:^4.0.0-rc.1":
-  version: 4.0.0-rc.1
-  resolution: "@chainsafe/dappeteer@npm:4.0.0-rc.1"
+"@chainsafe/dappeteer@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@chainsafe/dappeteer@npm:4.0.2"
   dependencies:
     "@metamask/providers": ^9.1.0
     node-stream-zip: ^1.13.0
@@ -1519,7 +1519,7 @@ __metadata:
       optional: true
     soy-puppeteer:
       optional: true
-  checksum: debb4e2a0ae79911a761be98cf105c64377e8e17aaa63f7bc2607ee156c822fadc87a4ebe287636b4ae8036cac479c112770e18935a78dc86ddda95cbfdb4b14
+  checksum: b462c13279f0a486b7c97cd3deb88a1c4dccd2905ea99cb02b76c247587e870a35582009c7c21a29c75ce8e7ff629049df8656fab6bc505d59f262932f16e153
   languageName: node
   linkType: hard
 
@@ -2529,6 +2529,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/snaps-types@npm:^0.26.2":
+  version: 0.26.2
+  resolution: "@metamask/snaps-types@npm:0.26.2"
+  dependencies:
+    "@metamask/providers": ^10.2.0
+    "@metamask/snaps-utils": ^0.26.2
+    "@metamask/types": ^1.1.0
+  checksum: 0f2fb945290ee53b308f02472bb79995ad95cd6a5d6a2efcfaf7941d8c75d6bbc8530b6ed0bd3899147a709509da397403807a942a877ca159e79b784cd95b96
+  languageName: node
+  linkType: hard
+
 "@metamask/snaps-utils@npm:^0.24.1":
   version: 0.24.1
   resolution: "@metamask/snaps-utils@npm:0.24.1"
@@ -2550,11 +2561,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/snaps-utils@npm:^0.26.2":
+  version: 0.26.2
+  resolution: "@metamask/snaps-utils@npm:0.26.2"
+  dependencies:
+    "@babel/core": ^7.18.6
+    "@babel/types": ^7.18.7
+    "@metamask/snaps-types": ^0.26.2
+    "@metamask/utils": ^3.3.1
+    "@noble/hashes": ^1.1.3
+    "@scure/base": ^1.1.1
+    cron-parser: ^4.5.0
+    eth-rpc-errors: ^4.0.3
+    fast-deep-equal: ^3.1.3
+    rfdc: ^1.3.0
+    semver: ^7.3.7
+    ses: ^0.17.0
+    superstruct: ^0.16.7
+    validate-npm-package-name: ^5.0.0
+  checksum: 1d87b5174d0a1f9d47abb450c164981bc0386bea2f41de54a3ae137d91acd1ba4e3a1eacc84d94c835e0cf80cbb8d668f5470bc4256b24b10d0ab80127e9096e
+  languageName: node
+  linkType: hard
+
 "@metamask/test-snap-bip32@workspace:packages/bip32":
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-bip32@workspace:packages/bip32"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2589,7 +2622,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-bip44@workspace:packages/bip44"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2623,7 +2656,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-confirm@workspace:packages/confirm"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2653,7 +2686,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-error@workspace:packages/error"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2683,7 +2716,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-managestate@workspace:packages/manageState"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2713,7 +2746,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-notification@workspace:packages/notification"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.0-rc.1
+    "@chainsafe/dappeteer": ^4.0.2
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -5955,6 +5988,15 @@ __metadata:
   version: 3.0.0
   resolution: "builtin-status-codes@npm:3.0.0"
   checksum: 1119429cf4b0d57bf76b248ad6f529167d343156ebbcc4d4e4ad600484f6bc63002595cbb61b67ad03ce55cd1d3c4711c03bbf198bf24653b8392420482f3773
+  languageName: node
+  linkType: hard
+
+"builtins@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "builtins@npm:5.0.1"
+  dependencies:
+    semver: ^7.0.0
+  checksum: 66d204657fe36522822a95b288943ad11b58f5eaede235b11d8c4edaa28ce4800087d44a2681524c340494aadb120a0068011acabe99d30e8f11a7d826d83515
   languageName: node
   linkType: hard
 
@@ -16080,6 +16122,7 @@ __metadata:
     "@metamask/eslint-config-nodejs": ^9.0.0
     "@metamask/eslint-config-typescript": ^9.0.1
     "@metamask/snaps-cli": ^0.24.1
+    "@metamask/snaps-types": ^0.26.2
     "@typescript-eslint/eslint-plugin": ^5.19.0
     "@typescript-eslint/parser": ^5.19.0
     eslint: ^7.30.0
@@ -16308,7 +16351,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.x, semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8":
+"semver@npm:7.x, semver@npm:^7.0.0, semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8":
   version: 7.3.8
   resolution: "semver@npm:7.3.8"
   dependencies:
@@ -18410,6 +18453,15 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 35703ac889d419cf2aceef63daeadbe4e77227c39ab6287eeb6c1b36a746b364f50ba22e88591f5d017bc54685d8137bc2d328d0a896e4d3fd22093c0f32a9ad
+  languageName: node
+  linkType: hard
+
+"validate-npm-package-name@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "validate-npm-package-name@npm:5.0.0"
+  dependencies:
+    builtins: ^5.0.0
+  checksum: 5342a994986199b3c28e53a8452a14b2bb5085727691ea7aa0d284a6606b127c371e0925ae99b3f1ef7cc7d2c9de75f52eb61a3d1cc45e39bca1e3a9444cbb4e
   languageName: node
   linkType: hard
 

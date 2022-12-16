@@ -8,20 +8,19 @@ import {
 import { ethErrors } from 'eth-rpc-errors';
 
 describe('bip44 snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: true,
+      installationSnapUrl: 'https://google.com',
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
+    connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
 
@@ -30,7 +29,7 @@ describe('bip44 snap', function () {
   });
 
   test('get account', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'getAccount',
@@ -45,14 +44,14 @@ describe('bip44 snap', function () {
   });
 
   test('sign message', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'signMessage',
       ['Sign this message'],
     );
-    await dappeteer.page.waitForTimeout(1000);
-    await dappeteer.snaps.acceptDialog();
+    await metaMask.page.waitForTimeout(1000);
+    await metaMask.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBe(
       '0xb95a3d5977531a500076b4a878d2f5bf330342312f65fdbb1652aff008e977727749f9aa69e3cee70f89043c2c0739e701c852c3e711c98d96f4493cd5602dd91daec30be9bddc4f18eddbc76909cfa761caefffa30bc536ac4c004526b53748',
@@ -61,11 +60,11 @@ describe('bip44 snap', function () {
 
   test('sign message reject', async function () {
     try {
-      dappeteer.snaps.invokeSnap(connectedPage, snapId, 'signMessage', [
+      metaMask.snaps.invokeSnap(connectedPage, snapId, 'signMessage', [
         'Do not sign this message',
       ]);
-      await dappeteer.page.waitForTimeout(1000);
-      await dappeteer.snaps.rejectDialog();
+      await metaMask.page.waitForTimeout(1000);
+      await metaMask.snaps.rejectDialog();
     } catch (e) {
       const error = ethErrors.provider.userRejectedRequest();
       expect(e).toStrictEqual(error);
@@ -74,7 +73,7 @@ describe('bip44 snap', function () {
 
   test('snap invoke wrong method', async function () {
     try {
-      dappeteer.snaps.invokeSnap(connectedPage, snapId, 'test-fail', [
+      metaMask.snaps.invokeSnap(connectedPage, snapId, 'test-fail', [
         'Do not sign this message',
       ]);
     } catch (e) {

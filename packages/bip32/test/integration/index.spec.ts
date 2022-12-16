@@ -8,20 +8,19 @@ import {
 import { ethErrors } from 'eth-rpc-errors';
 
 describe('bip32 snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: true,
+      installationSnapUrl: 'https://google.com',
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
+    connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
 
@@ -30,7 +29,7 @@ describe('bip32 snap', function () {
   });
 
   test('get public key secp256k1', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'getPublicKey',
@@ -42,12 +41,12 @@ describe('bip32 snap', function () {
     );
     const result = await resultPromise;
     expect(result).toBe(
-      '043500b21362f816e6eef231b165fdb64c7d5733a390360e85bdbfb407a83894d0682f7c749e55d84005cce8c4f4000f8a591081e9c1a3fc46830fdacd0d921a5f',
+      '0x043500b21362f816e6eef231b165fdb64c7d5733a390360e85bdbfb407a83894d0682f7c749e55d84005cce8c4f4000f8a591081e9c1a3fc46830fdacd0d921a5f',
     );
   });
 
   test('sign message secp256k1 accept', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'signMessage',
@@ -58,8 +57,8 @@ describe('bip32 snap', function () {
         message: 'Sign message test secp256k1',
       },
     );
-    await dappeteer.page.waitForTimeout(1000);
-    await dappeteer.snaps.acceptDialog();
+    await metaMask.page.waitForTimeout(1000);
+    await metaMask.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBe(
       '0x304402200c13a1d4611bcdfa7b83e574f2d10da6ab54b39e66385c34c6eb1d355e720c9b02206096ef06b9d7a73b4d19f1d848ad03e7f8410853a3453f0b89a2e4212eee8aa8',
@@ -67,7 +66,7 @@ describe('bip32 snap', function () {
   });
 
   test('sign message ed25519 accept', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'signMessage',
@@ -78,8 +77,8 @@ describe('bip32 snap', function () {
         message: 'Sign message test ed25519',
       },
     );
-    await dappeteer.page.waitForTimeout(1000);
-    await dappeteer.snaps.acceptDialog();
+    await metaMask.page.waitForTimeout(1000);
+    await metaMask.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBe(
       '0xa35273737d6b7b481babdafe98d31aa0428030967a07850656488783bfcf46ca318bc413f117f06d0633bb64e53cf973eb1c91d0dc2a9f03cc731e80b2959700',
@@ -88,14 +87,14 @@ describe('bip32 snap', function () {
 
   test('sign message reject', async function () {
     try {
-      dappeteer.snaps.invokeSnap(connectedPage, snapId, 'signMessage', {
+      metaMask.snaps.invokeSnap(connectedPage, snapId, 'signMessage', {
         path: ['m', "44'", "0'"],
         curve: 'ed25519',
         compressed: false,
         message: 'Message that test will not accept',
       });
-      await dappeteer.page.waitForTimeout(1000);
-      await dappeteer.snaps.rejectDialog();
+      await metaMask.page.waitForTimeout(1000);
+      await metaMask.snaps.rejectDialog();
     } catch (e) {
       const error = ethErrors.provider.userRejectedRequest();
       expect(e).toStrictEqual(error);
@@ -109,7 +108,7 @@ describe('bip32 snap', function () {
       message: string;
     }
     try {
-      dappeteer.snaps.invokeSnap<resultType>(
+      metaMask.snaps.invokeSnap<resultType>(
         connectedPage,
         snapId,
         'test-faliure',

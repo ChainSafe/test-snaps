@@ -2,26 +2,25 @@ import path from 'path';
 import {
   Dappeteer,
   initSnapEnv,
-  DappeteerPage,
   DappeteerBrowser,
+  DappeteerPage,
 } from '@chainsafe/dappeteer';
 import openrpc from '../../src/openrpc.json';
 
 describe('confirm snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: false,
+      installationSnapUrl: 'https://google.com',
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
+    connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
 
@@ -30,28 +29,28 @@ describe('confirm snap', function () {
   });
 
   test('snap invoke confirm accept', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
-    await dappeteer.page.waitForTimeout(1000);
-    await dappeteer.snaps.acceptDialog();
-    const result = await resultPromise;
 
-    expect(result).toBe(true);
+    await metaMask.page.waitForTimeout(1000);
+    await metaMask.snaps.acceptDialog();
+
+    expect(await resultPromise).toBe(true);
   });
 
   test('snap invoke confirm reject', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'confirm',
       ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
-    await dappeteer.page.waitForTimeout(1000);
-    await dappeteer.snaps.rejectDialog();
+    await metaMask.page.waitForTimeout(1000);
+    await metaMask.snaps.rejectDialog();
     const result = await resultPromise;
 
     expect(result).toBe(false);
@@ -63,8 +62,9 @@ describe('confirm snap', function () {
       data: { originalError: unknown };
       message: string;
     }
+
     try {
-      dappeteer.snaps.invokeSnap<resultType>(
+      metaMask.snaps.invokeSnap<resultType>(
         connectedPage,
         snapId,
         'test-faliure',
@@ -75,7 +75,7 @@ describe('confirm snap', function () {
   });
 
   test('snap invoke rpc.discover', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'rpc.discover',

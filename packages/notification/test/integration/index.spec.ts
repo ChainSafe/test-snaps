@@ -1,26 +1,25 @@
 import path from 'path';
 import {
   Dappeteer,
-  initSnapEnv,
-  DappeteerPage,
   DappeteerBrowser,
+  DappeteerPage,
+  initSnapEnv,
 } from '@chainsafe/dappeteer';
 
 describe('notification snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: false,
+      installationSnapUrl: 'https://google.com',
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
+    connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
   });
 
@@ -29,7 +28,7 @@ describe('notification snap', function () {
   });
 
   test('inApp notification', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'inApp',
@@ -41,7 +40,7 @@ describe('notification snap', function () {
   });
 
   test('native notification', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'native',
@@ -57,8 +56,9 @@ describe('notification snap', function () {
       data: { originalError: unknown };
       message: string;
     }
+
     try {
-      await dappeteer.snaps.invokeSnap<resultType>(
+      await metaMask.snaps.invokeSnap<resultType>(
         connectedPage,
         snapId,
         'notAMethod',
