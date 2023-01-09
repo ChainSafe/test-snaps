@@ -1503,9 +1503,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainsafe/dappeteer@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@chainsafe/dappeteer@npm:4.0.2"
+"@chainsafe/dappeteer@npm:^4.0.3-rc.1":
+  version: 4.0.3-rc.1
+  resolution: "@chainsafe/dappeteer@npm:4.0.3-rc.1"
   dependencies:
     "@metamask/providers": ^9.1.0
     node-stream-zip: ^1.13.0
@@ -1519,7 +1519,7 @@ __metadata:
       optional: true
     soy-puppeteer:
       optional: true
-  checksum: b462c13279f0a486b7c97cd3deb88a1c4dccd2905ea99cb02b76c247587e870a35582009c7c21a29c75ce8e7ff629049df8656fab6bc505d59f262932f16e153
+  checksum: c17252582be9f481579829c5e6ba79171f7270a7476126ab9ab95237537d5ae4b9a8653d9103f96a41da11bf2f871cc4c24d11cd7ad8c5f3bb3078f8cfa9f3e4
   languageName: node
   linkType: hard
 
@@ -2654,7 +2654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-confirm@workspace:packages/confirm"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.2
+    "@chainsafe/dappeteer": ^4.0.3-rc.1
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2684,7 +2684,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-error@workspace:packages/error"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.2
+    "@chainsafe/dappeteer": ^4.0.3-rc.1
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2714,7 +2714,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-managestate@workspace:packages/manageState"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.2
+    "@chainsafe/dappeteer": ^4.0.3-rc.1
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
@@ -2744,7 +2744,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metamask/test-snap-notification@workspace:packages/notification"
   dependencies:
-    "@chainsafe/dappeteer": ^4.0.2
+    "@chainsafe/dappeteer": ^4.0.3-rc.1
     "@metamask/auto-changelog": ^2.5.0
     "@metamask/eslint-config": ^6.0.0
     "@metamask/eslint-config-jest": ^6.0.0
