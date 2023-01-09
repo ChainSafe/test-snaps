@@ -8,20 +8,22 @@ import {
 import openrpc from '../../src/openrpc.json';
 
 describe('confirm snap', function () {
+  const INSTALLATION_SNAP_URL = 'https://google.com/';
   let metaMask: Dappeteer;
+  let metaMaskPage: DappeteerPage;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ metaMask, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser, metaMaskPage } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      installationSnapUrl: 'https://google.com',
+      installationSnapUrl: INSTALLATION_SNAP_URL,
     }));
-    connectedPage = await metaMask.page.browser().newPage();
-    await connectedPage.goto('https://google.com');
+    connectedPage = await metaMaskPage.browser().newPage();
+    await connectedPage.goto(INSTALLATION_SNAP_URL);
   });
 
   afterAll(async function () {
@@ -33,10 +35,9 @@ describe('confirm snap', function () {
       connectedPage,
       snapId,
       'confirm',
-      ['Test-prompt', 'Test-description', 'Test-textAreaContent'],
     );
 
-    await metaMask.page.waitForTimeout(1000);
+    await metaMask.page.waitForTimeout(2000);
     await metaMask.snaps.acceptDialog();
 
     expect(await resultPromise).toBe(true);
@@ -67,7 +68,7 @@ describe('confirm snap', function () {
       metaMask.snaps.invokeSnap<resultType>(
         connectedPage,
         snapId,
-        'test-faliure',
+        'test-not-existing-method',
       );
     } catch (e) {
       expect(e).toBe('Method not found.');
