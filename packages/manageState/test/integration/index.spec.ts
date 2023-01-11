@@ -18,6 +18,12 @@ describe('manage state snap', function () {
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
       installationSnapUrl: 'https://google.com',
+      playwrightOptions: {
+        headless: true,
+      },
+      puppeteerOptions: {
+        headless: true,
+      },
     }));
     connectedPage = await metaMask.page.browser().newPage();
     await connectedPage.goto('https://google.com');
