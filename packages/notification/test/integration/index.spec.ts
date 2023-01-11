@@ -14,7 +14,6 @@ describe('notification snap', function () {
 
   beforeAll(async function () {
     ({ metaMask, snapId, browser } = await initSnapEnv({
-      metaMaskVersion: 'v10.23.2',
       automation: 'playwright',
       browser: 'chrome',
       snapIdOrLocation: path.resolve(__dirname, '../..'),
